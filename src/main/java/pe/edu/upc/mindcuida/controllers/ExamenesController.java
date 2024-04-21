@@ -22,7 +22,12 @@ public class ExamenesController {
         Examenes examenes = d.map(examenesDTO, Examenes.class);
         exS.insert(examenes);
     }
-
+    @PutMapping
+    public void modificar(@RequestBody ExamenesDTO examenesDTO) {
+        ModelMapper d = new ModelMapper();
+        Examenes examenes = d.map(examenesDTO, Examenes.class);
+        exS.insert(examenes);
+    }
     @GetMapping
     public List<Examenes> listar() {
         return exS.list().stream().map(y -> {
@@ -30,6 +35,10 @@ public class ExamenesController {
                     return c.map(y, Examenes.class);
                 }
         ).collect(Collectors.toList());
+    }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        exS.delete(id);
     }
 
     @GetMapping("/{id}")
