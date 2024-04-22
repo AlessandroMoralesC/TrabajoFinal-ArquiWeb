@@ -20,4 +20,8 @@ public class RolServiceImplement implements IRolService {
     public List<Rol> list() {
         return roR.findAll();
     }
+    @Override
+    public Rol listId(int id) {
+        return roR.findById(id).orElse(new Rol());
+    }
 }

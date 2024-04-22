@@ -7,6 +7,5 @@ import java.util.List;
 public interface IRecetasService {
     public void insert (Recetas recetas);
     public List<Recetas> list();
-    public void delete(int id);
     public Recetas listId(int id);
 }

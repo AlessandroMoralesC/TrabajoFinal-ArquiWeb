@@ -21,10 +21,6 @@ public class ExamenesServiceImplement implements IExamenesService {
     public List<Examenes> list() {
         return exR.findAll();
     }
-    @Override
-    public void delete(int id) {
-        exR.deleteById(id);
-    }
 
     @Override
     public Examenes listId(int id) {

@@ -24,11 +24,6 @@ public class TratamientosServiceImplement implements ITratamientosService {
     }
 
     @Override
-    public void delete(int id) {
-        trR.deleteById(id);
-    }
-
-    @Override
     public Tratamientos listId(int id) {
         return trR.findById(id).orElse(new Tratamientos());
     }

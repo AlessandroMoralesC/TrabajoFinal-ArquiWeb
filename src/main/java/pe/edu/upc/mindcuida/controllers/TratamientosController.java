@@ -37,11 +37,6 @@ public class TratamientosController {
         ).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
-        trS.delete(id);
-    }
-
     @GetMapping("/{id}")
     public TratamientosDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();

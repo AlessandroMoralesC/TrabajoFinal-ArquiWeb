@@ -36,10 +36,6 @@ public class RecetasController {
                 }
         ).collect(Collectors.toList());
     }
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
-        resS.delete(id);
-    }
 
     @GetMapping("/{id}")
     public RecetasDTO listarId(@PathVariable("id") Integer id){

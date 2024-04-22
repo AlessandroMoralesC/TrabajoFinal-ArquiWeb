@@ -22,7 +22,12 @@ public class MetaController {
         Meta meta=d.map(metaDTO,Meta.class);
         meS.insert(meta);
     }
-
+    @PutMapping
+    public void modificar(@RequestBody MetaDTO metaDTO) {
+        ModelMapper d = new ModelMapper();
+        Meta meta = d.map(metaDTO, Meta.class);
+        meS.insert(meta);
+    }
     @GetMapping
     public List<Meta> listar(){
     return meS.list().stream().map(y->{
@@ -32,6 +37,16 @@ public class MetaController {
     ).collect(Collectors.toList());
 
     }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        meS.delete(id);
+    }
 
+    @GetMapping("/{id}")
+    public MetaDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        MetaDTO dto=m.map(meS.listId(id),MetaDTO.class);
+        return  dto;
+    }
 
 }

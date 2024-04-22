@@ -7,4 +7,6 @@ import java.util.List;
 public interface IMetaService {
     public void insert (Meta meta);
     public List<Meta> list();
+    public void delete(int id);
+    public Meta listId(int id);
 }

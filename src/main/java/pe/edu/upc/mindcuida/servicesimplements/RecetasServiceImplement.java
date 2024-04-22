@@ -25,11 +25,6 @@ public class RecetasServiceImplement implements IRecetasService {
     }
 
     @Override
-    public void delete(int id) {
-        resR.deleteById(id);
-    }
-
-    @Override
     public Recetas listId(int id) {
         return resR.findById(id).orElse(new Recetas());
     }

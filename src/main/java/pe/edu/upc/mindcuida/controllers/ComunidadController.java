@@ -22,6 +22,12 @@ public class ComunidadController {
         Comunidad comunidad = d.map(comunidadDTO, Comunidad.class);
         cS.insert(comunidad);
     }
+    @PutMapping
+    public void modificar(@RequestBody ComunidadDTO comunidadDTO) {
+        ModelMapper d = new ModelMapper();
+        Comunidad comunidad = d.map(comunidadDTO, Comunidad.class);
+        cS.insert(comunidad);
+    }
     @GetMapping
     public List<Comunidad> listar() {
         return cS.list().stream().map(y -> {
@@ -29,5 +35,11 @@ public class ComunidadController {
                     return c.map(y, Comunidad.class);
                 }
         ).collect(Collectors.toList());
+    }
+    @GetMapping("/{id}")
+    public ComunidadDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        ComunidadDTO dto=m.map(cS.listId(id),ComunidadDTO.class);
+        return  dto;
     }
 }
