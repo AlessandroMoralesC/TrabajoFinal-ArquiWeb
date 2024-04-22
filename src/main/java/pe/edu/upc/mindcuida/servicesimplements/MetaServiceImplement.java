@@ -22,4 +22,13 @@ public class MetaServiceImplement implements IMetaService {
     public List<Meta> list() {
         return meR.findAll();
     }
+    @Override
+    public void delete(int id) {
+        meR.deleteById(id);
+    }
+
+    @Override
+    public Meta listId(int id) {
+        return meR.findById(id).orElse(new Meta());
+    }
 }
