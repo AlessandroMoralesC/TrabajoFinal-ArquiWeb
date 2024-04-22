@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.mindcuida.entities.Cita;
 import pe.edu.upc.mindcuida.entities.Meta;
 import pe.edu.upc.mindcuida.repositories.IMetaRepository;
 import pe.edu.upc.mindcuida.servicesinterfaces.IMetaService;
