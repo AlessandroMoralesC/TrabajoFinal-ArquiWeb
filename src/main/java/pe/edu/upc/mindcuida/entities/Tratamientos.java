@@ -10,7 +10,7 @@ public class Tratamientos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTratamientos;
-    @Column(name = "nombreTratamientos", nullable = false,length = 50)
+    @Column(name = "nombreTratamientos", nullable = false,length = 500)
     private String nombreTratamientos;
     @Column(name = "fechainicioTratamientos", nullable = false)
 
@@ -18,9 +18,9 @@ public class Tratamientos {
     @Column(name = "fechafinTratamientos", nullable = false)
 
     private LocalDate fechafinTratamientos;
-    @Column(name = "estadoTratamientos", nullable = false,length = 50)
+    @Column(name = "estadoTratamientos", nullable = false,length = 500)
     private String estadoTratamientos;
-    @Column(name = "descripcionTratamientos", nullable = false,length = 50)
+    @Column(name = "descripcionTratamientos", nullable = false,length = 500)
 
     private String descripcionTratamientos;
 

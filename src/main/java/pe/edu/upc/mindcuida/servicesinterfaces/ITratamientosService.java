@@ -8,4 +8,6 @@ public interface ITratamientosService {
     public void insert (Tratamientos tratamientos);
     public List<Tratamientos> list();
     public Tratamientos listId(int id);
+    public List<String[]>cantidadDeTratamiento();
+
 }

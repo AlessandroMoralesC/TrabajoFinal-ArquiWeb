@@ -3,10 +3,12 @@ package pe.edu.upc.mindcuida.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.mindcuida.dtos.CantidadDeTratamientoDTO;
 import pe.edu.upc.mindcuida.dtos.TratamientosDTO;
 import pe.edu.upc.mindcuida.entities.Tratamientos;
 import pe.edu.upc.mindcuida.servicesinterfaces.ITratamientosService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,4 +45,18 @@ public class TratamientosController {
         TratamientosDTO dto=m.map(trS.listId(id),TratamientosDTO.class);
         return  dto;
     }
+
+    @GetMapping("/cantidadesdetratamiento")
+    public List<CantidadDeTratamientoDTO> cantidadDeTratamiento(){
+        List<String[]> filaLista=trS.cantidadDeTratamiento();
+        List<CantidadDeTratamientoDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            CantidadDeTratamientoDTO dto=new CantidadDeTratamientoDTO();
+            dto.setNombreTratamientos(columna[0]);
+            dto.setCantidadDeTratamientos(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return  dtoLista;
+    }
+
 }
