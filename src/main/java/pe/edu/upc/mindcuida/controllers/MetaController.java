@@ -30,13 +30,13 @@ public class MetaController {
     }
     @GetMapping
     public List<Meta> listar(){
-        return meS.list().stream().map(y->{
-                    ModelMapper m=new ModelMapper();
-                    return m.map(y,Meta.class);
-                }
-        ).collect(Collectors.toList());
+    return meS.list().stream().map(y->{
+        ModelMapper m=new ModelMapper();
+        return m.map(y,Meta.class);
     }
+    ).collect(Collectors.toList());
 
+    }
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         meS.delete(id);
@@ -50,6 +50,3 @@ public class MetaController {
     }
 
 }
-
-
-

@@ -49,3 +49,4 @@ public class ExamenesDTO {
         this.observacionesExamenes = observacionesExamenes;
     }
 }
+

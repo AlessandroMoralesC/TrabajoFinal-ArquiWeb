@@ -39,4 +39,3 @@ public class MetaDTO {
         this.descripcionMeta = descripcionMeta;
     }
 }
-
