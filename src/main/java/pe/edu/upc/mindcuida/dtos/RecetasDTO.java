@@ -1,5 +1,6 @@
 package pe.edu.upc.mindcuida.dtos;
 
+
 public class RecetasDTO {
 
     private int idRecetas;

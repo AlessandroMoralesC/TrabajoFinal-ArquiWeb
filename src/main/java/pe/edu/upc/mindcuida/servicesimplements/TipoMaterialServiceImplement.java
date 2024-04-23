@@ -26,7 +26,7 @@ public class TipoMaterialServiceImplement implements ITipoMaterialService {
 
     @Override
     public void delete(int id) {
-       tmR.deleteById(id);
+        tmR.deleteById(id);
     }
 
     @Override
