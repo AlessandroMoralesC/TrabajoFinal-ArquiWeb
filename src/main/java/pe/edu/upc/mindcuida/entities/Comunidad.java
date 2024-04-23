@@ -14,46 +14,58 @@ public class Comunidad {
     private String aprobacionesComunidad;
     @Column(name = "recomendacionesComunidad", nullable = false, length = 50)
     private String recomendacionesComunidad;
+    @ManyToOne
+    @JoinColumn(name="usuarioid")
+    private Usuario usuario;
 
     public Comunidad() {
     }
 
-    public Comunidad(int idComunidad, String experienciasComunidad, String aprobacionesComunidad, String recomendacionesComunidad) {
-        IdComunidad = idComunidad;
+    public Comunidad(int idComunidad, String experienciasComunidad, String aprobacionesComunidad, String recomendacionesComunidad, Usuario usuario) {
+        this.IdComunidad = idComunidad;
         this.experienciasComunidad = experienciasComunidad;
         this.aprobacionesComunidad = aprobacionesComunidad;
         this.recomendacionesComunidad = recomendacionesComunidad;
+        this.usuario = usuario;
     }
 
     public int getIdComunidad() {
         return IdComunidad;
     }
 
-    public String getExperienciasComunidad() {
-        return experienciasComunidad;
-    }
-
-    public String getAprobacionesComunidad() {
-        return aprobacionesComunidad;
-    }
-
-    public String getRecomendacionesComunidad() {
-        return recomendacionesComunidad;
-    }
-
     public void setIdComunidad(int idComunidad) {
         IdComunidad = idComunidad;
+    }
+
+    public String getExperienciasComunidad() {
+        return experienciasComunidad;
     }
 
     public void setExperienciasComunidad(String experienciasComunidad) {
         this.experienciasComunidad = experienciasComunidad;
     }
 
+    public String getAprobacionesComunidad() {
+        return aprobacionesComunidad;
+    }
+
     public void setAprobacionesComunidad(String aprobacionesComunidad) {
         this.aprobacionesComunidad = aprobacionesComunidad;
     }
 
+    public String getRecomendacionesComunidad() {
+        return recomendacionesComunidad;
+    }
+
     public void setRecomendacionesComunidad(String recomendacionesComunidad) {
         this.recomendacionesComunidad = recomendacionesComunidad;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -1,9 +1,15 @@
 package pe.edu.upc.mindcuida.dtos;
 
+
+import pe.edu.upc.mindcuida.entities.Usuario;
+
 public class RolDTO {
 
     private int idRol;
+
     private String rol;
+
+    private Usuario usuario;
 
     public int getIdRol() {
         return idRol;
@@ -19,5 +25,13 @@ public class RolDTO {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
