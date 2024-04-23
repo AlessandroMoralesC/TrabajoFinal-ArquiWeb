@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/examenes")
+@RequestMapping("/examss")
 public class ExamenesController {
     @Autowired
     private IExamenesService exS;
