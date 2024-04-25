@@ -24,14 +24,10 @@ public class Usuario {
     @Column(name = "especialidadUsuario", nullable = false,length = 50)
     private String especialidadUsuario;
 
-@ManyToOne
-@JoinColumn(name="metaid")
-    private Meta meta;
-
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, LocalDate nacimientoUsuario, int telefonoUsuario, String correoUsuario, String contrasenaUsuario, String especialidadUsuario, Meta meta) {
+    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, LocalDate nacimientoUsuario, int telefonoUsuario, String correoUsuario, String contrasenaUsuario, String especialidadUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -40,7 +36,6 @@ public class Usuario {
         this.correoUsuario = correoUsuario;
         this.contrasenaUsuario = contrasenaUsuario;
         this.especialidadUsuario = especialidadUsuario;
-        this.meta = meta;
     }
 
     public int getIdUsuario() {
@@ -105,13 +100,5 @@ public class Usuario {
 
     public void setEspecialidadUsuario(String especialidadUsuario) {
         this.especialidadUsuario = especialidadUsuario;
-    }
-
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
     }
 }

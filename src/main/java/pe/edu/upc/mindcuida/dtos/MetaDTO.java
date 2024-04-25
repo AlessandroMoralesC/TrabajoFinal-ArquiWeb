@@ -1,11 +1,14 @@
 package pe.edu.upc.mindcuida.dtos;
 
+import pe.edu.upc.mindcuida.entities.Usuario;
+
 public class MetaDTO {
 
     private int idMeta;
     private String estadoMeta;
     private String nombreMeta;
     private String descripcionMeta;
+    private Usuario usuario;
 
     public int getIdMeta() {
         return idMeta;
@@ -37,5 +40,13 @@ public class MetaDTO {
 
     public void setDescripcionMeta(String descripcionMeta) {
         this.descripcionMeta = descripcionMeta;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

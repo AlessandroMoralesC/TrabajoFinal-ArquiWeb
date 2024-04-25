@@ -32,4 +32,14 @@ public class MetaServiceImplement implements IMetaService {
     public Meta listId(int id) {
         return meR.findById(id).orElse(new Meta());
     }
+
+    @Override
+    public List<String[]> cantidadmetas() {
+        return meR.cantidadmetas();
+    }
+
+    @Override
+    public List<Meta> listMeta(String nombreusuario) {
+        return meR.listMeta((nombreusuario));
+    }
 }

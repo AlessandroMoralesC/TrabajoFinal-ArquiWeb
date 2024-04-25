@@ -14,7 +14,6 @@ public class UsuarioDTO {
     private String correoUsuario;
     private String contrasenaUsuario;
     private String especialidadUsuario;
-    private Meta meta;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -78,13 +77,5 @@ public class UsuarioDTO {
 
     public void setEspecialidadUsuario(String especialidadUsuario) {
         this.especialidadUsuario = especialidadUsuario;
-    }
-
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
     }
 }
