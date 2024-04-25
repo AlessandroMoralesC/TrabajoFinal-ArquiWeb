@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping
     public void insertar(@RequestBody UsuarioDTO usuarioDTO) {
@@ -26,6 +28,7 @@ public class UsuarioController {
     public void modificar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d = new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
+        String encodedPassword = passwordEncoder.encode(usuario.getContrasenaUsuario());
         uS.insert(usuario);
     }
     @GetMapping
