@@ -20,7 +20,7 @@ public class Tratamientos {
     private LocalDate fechafinTratamientos;
     @Column(name = "estadoTratamientos", nullable = false,length = 50)
     private String estadoTratamientos;
-    @Column(name = "descripcionTratamientos", nullable = false,length = 50)
+    @Column(name = "descripcionTratamientos", nullable = false)
 
     private String descripcionTratamientos;
 

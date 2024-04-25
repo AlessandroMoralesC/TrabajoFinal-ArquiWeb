@@ -50,6 +50,8 @@ public class MetaController {
         MetaDTO dto=m.map(meS.listId(id),MetaDTO.class);
         return  dto;
     }
+
+    //localhost:8083/metas/cantidademetas
     @GetMapping("/cantidademetas")
     public List<CantidadMetasDTO> cantidadMetasUsuarios() {
         List<String[]> filaLista = meS.cantidametas();
