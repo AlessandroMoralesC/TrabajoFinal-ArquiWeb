@@ -2,10 +2,13 @@ package pe.edu.upc.mindcuida.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -23,15 +26,20 @@ public class Usuario {
     private String contrasenaUsuario;
     @Column(name = "especialidadUsuario", nullable = false,length = 50)
     private String especialidadUsuario;
+    private Boolean enabled;
 
 @ManyToOne
 @JoinColumn(name="metaid")
     private Meta meta;
 
+@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+@JoinColumn(name = "idUsuario")
+    private List<Rol> roles;
+
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, LocalDate nacimientoUsuario, int telefonoUsuario, String correoUsuario, String contrasenaUsuario, String especialidadUsuario, Meta meta) {
+    public Usuario( int idUsuario, String nombreUsuario, String apellidoUsuario, LocalDate nacimientoUsuario, int telefonoUsuario, String correoUsuario, String contrasenaUsuario, String especialidadUsuario, Meta meta) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -113,5 +121,20 @@ public class Usuario {
 
     public void setMeta(Meta meta) {
         this.meta = meta;
+    }
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

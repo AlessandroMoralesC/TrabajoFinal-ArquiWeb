@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.UsuarioDTO;
 import pe.edu.upc.mindcuida.entities.Usuario;
@@ -22,13 +23,14 @@ public class UsuarioController {
     public void insertar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d = new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
+        String encodedPassword = passwordEncoder.encode(usuario.getContrasenaUsuario());
+        usuario.setContrasenaUsuario(encodedPassword);
         uS.insert(usuario);
     }
     @PutMapping
     public void modificar(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper d = new ModelMapper();
         Usuario usuario = d.map(usuarioDTO, Usuario.class);
-        String encodedPassword = passwordEncoder.encode(usuario.getContrasenaUsuario());
         uS.insert(usuario);
     }
     @GetMapping
