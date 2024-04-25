@@ -51,7 +51,6 @@ public class CitaController {
     }
 
     @GetMapping("/buscarcitaporFecha")
-    @PreAuthorize("hasAuthority('psicologo')")
     public List<CitaDTO> buscarcitaporFecha(@RequestParam LocalDate fecha) {
         return ciS.buscarCitaporFecha(fecha).stream().map(x -> {
             ModelMapper m = new ModelMapper();

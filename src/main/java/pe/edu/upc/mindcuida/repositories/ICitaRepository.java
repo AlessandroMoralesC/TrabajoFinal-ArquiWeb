@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface ICitaRepository extends JpaRepository<Cita,Integer> {
-    @Query("from Cita c where c.fechaCita=:fecha")
+    @Query("select c from Cita c where c.fechaCita = :fecha")
     List<Cita>buscarCitaporFecha(@Param("fecha")LocalDate fecha);
 }
