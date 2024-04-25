@@ -18,6 +18,7 @@ public class RecetasController {
     private IRecetasService resS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody RecetasDTO recetasDTO) {
         ModelMapper d=new ModelMapper();
         Recetas recetas=d.map(recetasDTO,Recetas.class);
