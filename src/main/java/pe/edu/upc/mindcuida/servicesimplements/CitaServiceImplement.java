@@ -6,6 +6,7 @@ import pe.edu.upc.mindcuida.entities.Cita;
 import pe.edu.upc.mindcuida.repositories.ICitaRepository;
 import pe.edu.upc.mindcuida.servicesinterfaces.ICitaService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -29,5 +30,10 @@ public class CitaServiceImplement implements ICitaService {
     @Override
     public Cita listId(int id) {
         return ciR.findById(id).orElse(new Cita());
+    }
+
+    @Override
+    public List<Cita> buscarCitaporFecha(LocalDate fecha) {
+        return ciR.buscarCitaporFecha(fecha);
     }
 }
