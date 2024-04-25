@@ -12,7 +12,7 @@ public class Materiales {
     private String nombreMateriales;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
     @ManyToOne
     @JoinColumn(name="tipomaterialtid")
     private TipoMaterial tipoMaterial;
@@ -20,7 +20,7 @@ public class Materiales {
     public Materiales() {
     }
 
-    public Materiales(int idMateriales, String nombreMateriales, Usuario usuario, TipoMaterial tipoMaterial) {
+    public Materiales(int idMateriales, String nombreMateriales, Users usuario, TipoMaterial tipoMaterial) {
         this.idMateriales = idMateriales;
         this.nombreMateriales = nombreMateriales;
         this.usuario = usuario;
@@ -43,11 +43,11 @@ public class Materiales {
         this.nombreMateriales = nombreMateriales;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 

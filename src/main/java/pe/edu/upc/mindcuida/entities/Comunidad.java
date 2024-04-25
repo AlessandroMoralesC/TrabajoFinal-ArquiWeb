@@ -16,12 +16,12 @@ public class Comunidad {
     private String recomendacionesComunidad;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public Comunidad() {
     }
 
-    public Comunidad(int idComunidad, String experienciasComunidad, String aprobacionesComunidad, String recomendacionesComunidad, Usuario usuario) {
+    public Comunidad(int idComunidad, String experienciasComunidad, String aprobacionesComunidad, String recomendacionesComunidad, Users usuario) {
         this.IdComunidad = idComunidad;
         this.experienciasComunidad = experienciasComunidad;
         this.aprobacionesComunidad = aprobacionesComunidad;
@@ -61,11 +61,11 @@ public class Comunidad {
         this.recomendacionesComunidad = recomendacionesComunidad;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

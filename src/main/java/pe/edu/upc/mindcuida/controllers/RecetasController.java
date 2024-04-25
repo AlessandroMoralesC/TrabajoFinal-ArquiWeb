@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.RecetasDTO;
 import pe.edu.upc.mindcuida.entities.Recetas;
@@ -29,6 +30,7 @@ public class RecetasController {
         resS.insert(recetas);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('paciente')")
     public List<Recetas> listar(){
         return resS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();

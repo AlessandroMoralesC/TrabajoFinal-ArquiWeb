@@ -3,7 +3,6 @@ package pe.edu.upc.mindcuida.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.mindcuida.entities.Respuestas;
-import pe.edu.upc.mindcuida.entities.Rol;
 import pe.edu.upc.mindcuida.repositories.IRespuestasRepository;
 import pe.edu.upc.mindcuida.servicesinterfaces.IRespuestasService;
 

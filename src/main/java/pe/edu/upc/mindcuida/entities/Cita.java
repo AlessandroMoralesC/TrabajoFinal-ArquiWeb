@@ -21,12 +21,12 @@ public class Cita {
     private LocalTime horaCita;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public Cita() {
     }
 
-    public Cita(int idCita, LocalDate fechaCita, String motivoCita, LocalTime horaCita, Usuario usuario) {
+    public Cita(int idCita, LocalDate fechaCita, String motivoCita, LocalTime horaCita, Users usuario) {
         this.idCita = idCita;
         this.fechaCita = fechaCita;
         this.motivoCita = motivoCita;
@@ -66,11 +66,11 @@ public class Cita {
         this.horaCita = horaCita;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

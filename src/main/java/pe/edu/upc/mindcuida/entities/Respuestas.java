@@ -15,12 +15,12 @@ public class Respuestas {
     private String respuestas;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public Respuestas() {
     }
 
-    public Respuestas(int idRespuesta, String pregunta, String respuestas, Usuario usuario) {
+    public Respuestas(int idRespuesta, String pregunta, String respuestas, Users usuario) {
         this.idRespuesta = idRespuesta;
         this.pregunta = pregunta;
         this.respuestas = respuestas;
@@ -51,11 +51,11 @@ public class Respuestas {
         this.respuestas = respuestas;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

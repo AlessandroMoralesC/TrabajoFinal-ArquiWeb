@@ -1,14 +1,14 @@
 package pe.edu.upc.mindcuida.dtos;
 
 
-import pe.edu.upc.mindcuida.entities.Usuario;
+import pe.edu.upc.mindcuida.entities.Users;
 
 import java.time.LocalDate;
 
 public class HistorialClinicoDTO {
     private int idHClinico;
     private LocalDate fechaperturaHClinico;
-    private Usuario usuario;
+    private Users usuario;
 
     public int getIdHClinico() {
         return idHClinico;
@@ -26,11 +26,11 @@ public class HistorialClinicoDTO {
         this.fechaperturaHClinico = fechaperturaHClinico;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }
