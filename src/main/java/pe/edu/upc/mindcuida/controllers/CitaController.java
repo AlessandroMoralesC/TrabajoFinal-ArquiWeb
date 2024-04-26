@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CitaDTO;
 import pe.edu.upc.mindcuida.entities.Cita;
@@ -17,12 +18,14 @@ public class CitaController {
     private ICitaService ciS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);
         ciS.insert(cita);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);

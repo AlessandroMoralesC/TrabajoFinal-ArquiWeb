@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CantidadDeTratamientoPorEfectividadDTO;
 import pe.edu.upc.mindcuida.dtos.ListaDeTratamientosEnProcesoDTO;
@@ -20,12 +21,14 @@ public class TratamientosController {
     private ITratamientosService trS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
         trS.insert(tratamientos);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
