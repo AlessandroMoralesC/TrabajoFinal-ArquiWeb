@@ -42,7 +42,7 @@ public class ExamenesController {
         return  dto;
     }
     @GetMapping("/buscarResultadoporId")
-    public List<ExamenesDTO> buscarresultadosporId(@RequestParam Integer id) {
+    public List<ExamenesDTO> buscarresultadosporId(@RequestParam int id) {
         return exS.buscarresultadosporId(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, ExamenesDTO.class);

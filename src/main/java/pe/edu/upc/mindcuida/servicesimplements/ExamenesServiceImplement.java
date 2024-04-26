@@ -28,7 +28,7 @@ public class ExamenesServiceImplement implements IExamenesService {
     }
 
     @Override
-    public List<Examenes> buscarresultadosporId(Integer id) {
+    public List<Examenes>buscarresultadosporId(int id) {
         return exR.buscarResultadoPorId(id);
     }
 }
