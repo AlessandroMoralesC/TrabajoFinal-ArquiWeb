@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.UserDTO;
@@ -48,6 +49,7 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('administrador')")
     public List<UserDTO> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
