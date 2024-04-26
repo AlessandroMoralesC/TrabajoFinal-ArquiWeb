@@ -27,4 +27,14 @@ public class TratamientosServiceImplement implements ITratamientosService {
     public Tratamientos listId(int id) {
         return trR.findById(id).orElse(new Tratamientos());
     }
+
+    @Override
+    public List<String[]> cantidadDeTratamientosPorEfectividad() {
+        return trR.cantidadDeTratamientosPorEfectividad();
+    }
+
+    @Override
+    public List<String[]> listaDeTratamientosEnProceso() {
+        return trR.listaDeTratamientosEnProceso();
+    }
 }

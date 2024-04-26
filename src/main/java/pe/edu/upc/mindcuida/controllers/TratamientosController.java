@@ -3,10 +3,13 @@ package pe.edu.upc.mindcuida.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.mindcuida.dtos.CantidadDeTratamientoPorEfectividadDTO;
+import pe.edu.upc.mindcuida.dtos.ListaDeTratamientosEnProcesoDTO;
 import pe.edu.upc.mindcuida.dtos.TratamientosDTO;
 import pe.edu.upc.mindcuida.entities.Tratamientos;
 import pe.edu.upc.mindcuida.servicesinterfaces.ITratamientosService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,4 +46,36 @@ public class TratamientosController {
         TratamientosDTO dto=m.map(trS.listId(id),TratamientosDTO.class);
         return  dto;
     }
+
+    @GetMapping("/cantidadtratamientoefectividad")
+    public List<CantidadDeTratamientoPorEfectividadDTO> cantidadTratamientoPorEfectividad(){
+        List<String[]> filaLista=trS.cantidadDeTratamientosPorEfectividad();
+        List<CantidadDeTratamientoPorEfectividadDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            CantidadDeTratamientoPorEfectividadDTO dto=new CantidadDeTratamientoPorEfectividadDTO();
+            dto.setNombreTratamientos(columna[0]);
+            dto.setEfectividadTratamientos(columna[1]);
+            dto.setCantidadDeTratamientoEfectivas(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/listatratamientoproceso")
+    public List<ListaDeTratamientosEnProcesoDTO> listaDeTratamientosEnProceos(){
+        List<String[]> filaLista=trS.listaDeTratamientosEnProceso();
+        List<ListaDeTratamientosEnProcesoDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            ListaDeTratamientosEnProcesoDTO dto=new ListaDeTratamientosEnProcesoDTO();
+            dto.setNombreTratamientos(columna[0]);
+            dto.setEstadoTratamientos(columna[1]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+
+
+
+
 }
