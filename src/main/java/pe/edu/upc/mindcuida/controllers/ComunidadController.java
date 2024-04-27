@@ -42,4 +42,30 @@ public class ComunidadController {
         ComunidadDTO dto=m.map(cS.listId(id),ComunidadDTO.class);
         return  dto;
     }
+
+        @GetMapping("/experiencias")
+    public List<ComunidadDTO> experienciasDTOS() {
+        List<String[]> filaLista = cS.listaExp();
+        List<ComunidadDTO> dtoLista = new ArrayList<>();
+
+        for (String[] columna : filaLista) {
+            ComunidadDTO dto = new ComunidadDTO();
+            dto.setExperienciasComunidad(columna[0]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/recomendaciones")
+    public List<ComunidadDTO> recomendacionesDTOS() {
+        List<String[]> filaLista = cS.listaExp();
+        List<ComunidadDTO> dtoLista = new ArrayList<>();
+
+        for (String[] columna : filaLista) {
+            ComunidadDTO dto = new ComunidadDTO();
+            dto.setRecomendacionesComunidad(columna[0]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 }
