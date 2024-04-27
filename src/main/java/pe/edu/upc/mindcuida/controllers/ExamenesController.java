@@ -20,6 +20,7 @@ public class ExamenesController {
     private IExamenesService exS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody ExamenesDTO examenesDTO) {
         ModelMapper d = new ModelMapper();
         Examenes examenes = d.map(examenesDTO, Examenes.class);

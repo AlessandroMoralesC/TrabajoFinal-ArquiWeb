@@ -25,13 +25,13 @@ public class RecetasController {
         resS.insert(recetas);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody RecetasDTO recetasDTO) {
         ModelMapper d = new ModelMapper();
         Recetas recetas = d.map(recetasDTO, Recetas.class);
         resS.insert(recetas);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('paciente')")
     public List<Recetas> listar(){
         return resS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();

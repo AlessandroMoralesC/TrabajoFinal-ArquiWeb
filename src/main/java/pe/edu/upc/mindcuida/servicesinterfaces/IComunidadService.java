@@ -9,4 +9,6 @@ public interface IComunidadService {
     public void insert (Comunidad comunidad);
     public List<Comunidad> list();
     public Comunidad listId(int id);
+    public List<String[]> listaExp();
+    public List<String[]> listaRec();
 }

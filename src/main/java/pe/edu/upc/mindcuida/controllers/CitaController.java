@@ -19,12 +19,14 @@ public class CitaController {
     private ICitaService ciS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);
         ciS.insert(cita);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);

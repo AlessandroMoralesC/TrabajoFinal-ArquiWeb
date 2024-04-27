@@ -13,6 +13,8 @@ public class TratamientosDTO {
 
     private String descripcionTratamientos;
 
+    private String efectividadTratamientos;
+
     public int getIdTratamientos() {
         return idTratamientos;
     }
@@ -59,5 +61,13 @@ public class TratamientosDTO {
 
     public void setDescripcionTratamientos(String descripcionTratamientos) {
         this.descripcionTratamientos = descripcionTratamientos;
+    }
+
+    public String getEfectividadTratamientos() {
+        return efectividadTratamientos;
+    }
+
+    public void setEfectividadTratamientos(String efectividadTratamientos) {
+        this.efectividadTratamientos = efectividadTratamientos;
     }
 }
