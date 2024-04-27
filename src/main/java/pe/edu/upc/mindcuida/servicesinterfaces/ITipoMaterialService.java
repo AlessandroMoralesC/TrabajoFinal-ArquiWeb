@@ -9,4 +9,8 @@ public interface ITipoMaterialService {
     public List<TipoMaterial> list();
     public void delete(int id);
     public TipoMaterial listId(int id);
+
+    public List<String[]> CantidadMaterialNombre();
+
+    public List<String[]> CantidadDeMaterialPorTipo();
 }

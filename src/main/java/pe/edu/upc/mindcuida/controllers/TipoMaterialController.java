@@ -3,10 +3,13 @@ package pe.edu.upc.mindcuida.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.mindcuida.dtos.CantidadDeMaterialPorTipoDTO;
+import pe.edu.upc.mindcuida.dtos.CantidadMaterialPorNombreDTO;
 import pe.edu.upc.mindcuida.dtos.TipoMaterialDTO;
 import pe.edu.upc.mindcuida.entities.TipoMaterial;
 import pe.edu.upc.mindcuida.servicesinterfaces.ITipoMaterialService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,5 +48,29 @@ public class TipoMaterialController {
         ModelMapper m=new ModelMapper();
         TipoMaterialDTO dto=m.map(tmS.listId(id),TipoMaterialDTO.class);
         return  dto;
+    }
+    @GetMapping("/CantidadMaterialPorNombreDTO")
+    public List<CantidadMaterialPorNombreDTO> cantidadmaterialPorNombre(){
+        List<String[]> filaLista=tmS.CantidadMaterialNombre();
+        List<CantidadMaterialPorNombreDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            CantidadMaterialPorNombreDTO dto=new CantidadMaterialPorNombreDTO();
+            dto.setTematmaterial(columna[0]);
+            dto.setCantidadRegistrosTema(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    @GetMapping("/CantidadMaterialPorTipoDTO")
+    public List<CantidadDeMaterialPorTipoDTO> cantidadDeMaterialPorTipo(){
+        List<String[]> filaLista=tmS.CantidadDeMaterialPorTipo();
+        List<CantidadDeMaterialPorTipoDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            CantidadDeMaterialPorTipoDTO dto=new CantidadDeMaterialPorTipoDTO();
+            dto.setTipotmaterial(columna[0]);
+            dto.setCantidadRegistros(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }

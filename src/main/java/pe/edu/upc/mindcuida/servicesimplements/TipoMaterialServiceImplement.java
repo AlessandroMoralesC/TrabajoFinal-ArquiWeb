@@ -33,4 +33,15 @@ public class TipoMaterialServiceImplement implements ITipoMaterialService {
     public TipoMaterial listId(int id) {
         return tmR.findById(id).orElse(new TipoMaterial());
     }
+
+    @Override
+    public List<String[]> CantidadDeMaterialPorTipo() {
+        return tmR.CantidadDeMaterialPorTipo();
+    }
+
+    @Override
+    public List<String[]> CantidadMaterialNombre() {
+        return tmR.CantidadMaterialPorNombre();
+    }
+
 }
