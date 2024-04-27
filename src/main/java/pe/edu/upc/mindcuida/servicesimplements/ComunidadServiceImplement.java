@@ -34,6 +34,6 @@ public class ComunidadServiceImplement implements IComunidadService {
 
     @Override
     public List<String[]> listaRec() {
-        return cR.listaRec();
+        return cR.identificaRec();
     }
 }
