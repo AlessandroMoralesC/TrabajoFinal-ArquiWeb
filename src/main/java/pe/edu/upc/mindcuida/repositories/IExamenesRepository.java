@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 
 public interface IExamenesRepository extends JpaRepository<Examenes,Integer> {
-    @Query("select e.resultadosExamenes FROM Examenes e where e.idExamenes=:id")
+    @Query("select e FROM Examenes e where e.idExamenes=:id")
     List<Examenes> buscarResultadoPorId(@Param("id")Integer id);
 }
