@@ -27,4 +27,11 @@ public interface ITipoMaterialRepository extends JpaRepository<TipoMaterial, Int
             "FROM tipo_material \n" +
             "WHERE tematmaterial = 'ansiedad'; ",nativeQuery = true)
     List<String[]> ListadoFiltrarMateriales();
+
+
+    @Query(value = " SELECT tematmaterial, linktmaterial \n " +
+            "FROM tipo_material \n" +
+            "WHERE tematmaterial = 'depresion' \n" +
+            "AND tipotmaterial = 'lectura'; ",nativeQuery = true)
+    List<String[]> ListadoVideosTipo();
 }

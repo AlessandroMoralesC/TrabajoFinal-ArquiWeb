@@ -49,4 +49,9 @@ public class TipoMaterialServiceImplement implements ITipoMaterialService {
         return tmR.CantidadMaterialPorNombre();
     }
 
+    @Override
+    public List<String[]> ListadoVideosTipo() {
+        return tmR.ListadoVideosTipo();
+    }
+
 }

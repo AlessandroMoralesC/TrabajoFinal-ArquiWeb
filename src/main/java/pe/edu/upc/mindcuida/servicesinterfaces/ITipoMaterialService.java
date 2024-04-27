@@ -15,4 +15,6 @@ public interface ITipoMaterialService {
     public List<String[]> CantidadDeMaterialPorTipo();
 
     public List<String[]> ListadoFiltrarMateriales();
+
+    public List<String[]> ListadoVideosTipo();
 }

@@ -3,10 +3,7 @@ package pe.edu.upc.mindcuida.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.mindcuida.dtos.CantidadDeMaterialPorTipoDTO;
-import pe.edu.upc.mindcuida.dtos.CantidadMaterialPorNombreDTO;
-import pe.edu.upc.mindcuida.dtos.ListadoFiltrarMaterialesDTO;
-import pe.edu.upc.mindcuida.dtos.TipoMaterialDTO;
+import pe.edu.upc.mindcuida.dtos.*;
 import pe.edu.upc.mindcuida.entities.TipoMaterial;
 import pe.edu.upc.mindcuida.servicesinterfaces.ITipoMaterialService;
 
@@ -83,6 +80,19 @@ public class TipoMaterialController {
             ListadoFiltrarMaterialesDTO dto = new ListadoFiltrarMaterialesDTO();
             dto.setEnlaceMaterial(columna[0]);
             dto.setMaterialFormato(columna[1]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/ListadoVideosTipo")
+    public List<ListadoVideosTipoDTO> ListadoVideosTipo() {
+        List<String[]> filaLista = tmS.ListadoVideosTipo();
+        List<ListadoVideosTipoDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            ListadoVideosTipoDTO dto = new ListadoVideosTipoDTO();
+            dto.setTipoTMaterial(columna[0]);
+            dto.setLinkTMaterial(columna[1]);
             dtoLista.add(dto);
         }
         return dtoLista;
