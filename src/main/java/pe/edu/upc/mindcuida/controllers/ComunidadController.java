@@ -7,6 +7,7 @@ import pe.edu.upc.mindcuida.dtos.ComunidadDTO;
 import pe.edu.upc.mindcuida.entities.Comunidad;
 import pe.edu.upc.mindcuida.servicesinterfaces.IComunidadService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
