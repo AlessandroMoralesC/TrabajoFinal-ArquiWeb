@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CantidadDeMaterialPorTipoDTO;
 import pe.edu.upc.mindcuida.dtos.CantidadMaterialPorNombreDTO;
+import pe.edu.upc.mindcuida.dtos.ListadoFiltrarMaterialesDTO;
 import pe.edu.upc.mindcuida.dtos.TipoMaterialDTO;
 import pe.edu.upc.mindcuida.entities.TipoMaterial;
 import pe.edu.upc.mindcuida.servicesinterfaces.ITipoMaterialService;
@@ -69,6 +70,19 @@ public class TipoMaterialController {
             CantidadDeMaterialPorTipoDTO dto=new CantidadDeMaterialPorTipoDTO();
             dto.setTipotmaterial(columna[0]);
             dto.setCantidadRegistros(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/ListadoFiltrarMateriales")
+    public List<ListadoFiltrarMaterialesDTO> listadofiltrarMateriales() {
+        List<String[]> filaLista = tmS.ListadoFiltrarMateriales();
+        List<ListadoFiltrarMaterialesDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            ListadoFiltrarMaterialesDTO dto = new ListadoFiltrarMaterialesDTO();
+            dto.setEnlaceMaterial(columna[0]);
+            dto.setMaterialFormato(columna[1]);
             dtoLista.add(dto);
         }
         return dtoLista;

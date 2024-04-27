@@ -40,6 +40,11 @@ public class TipoMaterialServiceImplement implements ITipoMaterialService {
     }
 
     @Override
+    public List<String[]> ListadoFiltrarMateriales() {
+        return tmR.ListadoFiltrarMateriales();
+    }
+
+    @Override
     public List<String[]> CantidadMaterialNombre() {
         return tmR.CantidadMaterialPorNombre();
     }

@@ -22,4 +22,9 @@ public interface ITipoMaterialRepository extends JpaRepository<TipoMaterial, Int
             "GROUP BY tipotmaterial " +
             "ORDER BY cantidad DESC", nativeQuery = true)
     List<String[]> CantidadDeMaterialPorTipo();
+
+    @Query(value = " SELECT linktmaterial, tipotmaterial, tematmaterial \n" +
+            "FROM tipo_material \n" +
+            "WHERE tematmaterial = 'ansiedad'; ",nativeQuery = true)
+    List<String[]> ListadoFiltrarMateriales();
 }

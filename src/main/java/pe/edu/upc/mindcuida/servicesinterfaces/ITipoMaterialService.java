@@ -13,4 +13,6 @@ public interface ITipoMaterialService {
     public List<String[]> CantidadMaterialNombre();
 
     public List<String[]> CantidadDeMaterialPorTipo();
+
+    public List<String[]> ListadoFiltrarMateriales();
 }
