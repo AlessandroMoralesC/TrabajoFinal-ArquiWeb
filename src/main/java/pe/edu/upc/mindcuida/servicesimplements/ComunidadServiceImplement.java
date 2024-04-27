@@ -27,4 +27,13 @@ public class ComunidadServiceImplement implements IComunidadService {
         return cR.findById(id).orElse(new Comunidad());
     }
 
+    @Override
+    public List<String[]> listaExp() {
+        return cR.identificaExp();
+    }
+
+    @Override
+    public List<String[]> listaRec() {
+        return cR.listaRec();
+    }
 }
