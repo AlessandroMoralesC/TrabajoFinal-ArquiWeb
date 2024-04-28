@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.HorarioMedicoDTO;
 import pe.edu.upc.mindcuida.entities.HorarioMedico;
@@ -17,12 +18,14 @@ public class HorarioMedicoController {
     private IHorarioMedicoService hmS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
         hmS.insert(horarioMedico);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
