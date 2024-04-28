@@ -4,10 +4,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.mindcuida.dtos.CitaDTO;
 import pe.edu.upc.mindcuida.dtos.ExamenesDTO;
 import pe.edu.upc.mindcuida.entities.Examenes;
 import pe.edu.upc.mindcuida.servicesinterfaces.IExamenesService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,5 +41,12 @@ public class ExamenesController {
         ModelMapper m=new ModelMapper();
         ExamenesDTO dto=m.map(exS.listId(id),ExamenesDTO.class);
         return  dto;
+    }
+    @GetMapping("/buscarResultadoporId")
+    public List<ExamenesDTO> buscarresultadosporId(@RequestParam int id) {
+        return exS.buscarresultadosporId(id).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ExamenesDTO.class);
+        }).collect(Collectors.toList());
     }
 }

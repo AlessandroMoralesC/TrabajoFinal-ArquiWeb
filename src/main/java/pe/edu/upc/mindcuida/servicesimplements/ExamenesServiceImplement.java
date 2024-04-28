@@ -26,4 +26,9 @@ public class ExamenesServiceImplement implements IExamenesService {
     public Examenes listId(int id) {
         return exR.findById(id).orElse(new Examenes());
     }
+
+    @Override
+    public List<Examenes>buscarresultadosporId(int id) {
+        return exR.buscarResultadoPorId(id);
+    }
 }

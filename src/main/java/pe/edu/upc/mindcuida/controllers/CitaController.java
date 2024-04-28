@@ -8,6 +8,7 @@ import pe.edu.upc.mindcuida.dtos.CitaDTO;
 import pe.edu.upc.mindcuida.entities.Cita;
 import pe.edu.upc.mindcuida.servicesinterfaces.ICitaService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,5 +50,13 @@ public class CitaController {
         ModelMapper m=new ModelMapper();
         CitaDTO dto=m.map(ciS.listId(id),CitaDTO.class);
         return  dto;
+    }
+
+    @GetMapping("/buscarcitaporFecha")
+    public List<CitaDTO> buscarcitaporFecha(@RequestParam LocalDate fecha) {
+        return ciS.buscarCitaporFecha(fecha).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, CitaDTO.class);
+        }).collect(Collectors.toList());
     }
 }
