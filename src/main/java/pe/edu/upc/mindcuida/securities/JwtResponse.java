@@ -3,7 +3,7 @@ package pe.edu.upc.mindcuida.securities;
 import java.io.Serializable;
 
 public class JwtResponse implements Serializable {
-<<<<<<< Updated upstream
+
     private static final long serialVersionUID = -8091879091924046844L;
     private final String jwttoken;
 
@@ -15,6 +15,5 @@ public class JwtResponse implements Serializable {
         super();
         this.jwttoken = jwttoken;
     }
-=======
->>>>>>> Stashed changes
+
 }
