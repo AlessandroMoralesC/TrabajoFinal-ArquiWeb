@@ -12,12 +12,12 @@ public class Mensajes {
     private String mensaje;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public Mensajes() {
     }
 
-    public Mensajes(int idMensaje, String mensaje, Usuario usuario) {
+    public Mensajes(int idMensaje, String mensaje, Users usuario) {
         this.idMensaje = idMensaje;
         this.mensaje = mensaje;
         this.usuario = usuario;
@@ -39,11 +39,11 @@ public class Mensajes {
         this.mensaje = mensaje;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

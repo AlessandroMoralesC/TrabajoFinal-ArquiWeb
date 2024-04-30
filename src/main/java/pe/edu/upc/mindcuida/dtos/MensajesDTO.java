@@ -1,13 +1,13 @@
 package pe.edu.upc.mindcuida.dtos;
 
 
-import pe.edu.upc.mindcuida.entities.Usuario;
+import pe.edu.upc.mindcuida.entities.Users;
 
 public class MensajesDTO {
 
     private int idMensaje;
     private String mensaje;
-    private Usuario usuario;
+    private Users usuario;
 
     public int getIdMensaje() {
         return idMensaje;
@@ -25,11 +25,11 @@ public class MensajesDTO {
         this.mensaje = mensaje;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

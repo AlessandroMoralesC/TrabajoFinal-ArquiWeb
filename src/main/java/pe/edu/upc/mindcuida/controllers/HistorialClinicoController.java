@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.HistorialClinicoDTO;
 import pe.edu.upc.mindcuida.entities.HistorialClinico;
@@ -17,12 +18,14 @@ public class HistorialClinicoController {
     private IHistorialClinicoService hcS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody HistorialClinicoDTO historialClinicoDTO) {
         ModelMapper d = new ModelMapper();
         HistorialClinico historialClinico = d.map(historialClinicoDTO, HistorialClinico.class);
         hcS.insert(historialClinico);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody HistorialClinicoDTO historialClinicoDTO) {
         ModelMapper d = new ModelMapper();
         HistorialClinico historialClinico = d.map(historialClinicoDTO, HistorialClinico.class);

@@ -26,11 +26,32 @@ public class TipoMaterialServiceImplement implements ITipoMaterialService {
 
     @Override
     public void delete(int id) {
-        tmR.deleteById(id);
+       tmR.deleteById(id);
     }
 
     @Override
     public TipoMaterial listId(int id) {
         return tmR.findById(id).orElse(new TipoMaterial());
     }
+
+    @Override
+    public List<String[]> CantidadDeMaterialPorTipo() {
+        return tmR.CantidadDeMaterialPorTipo();
+    }
+
+    @Override
+    public List<String[]> ListadoFiltrarMateriales() {
+        return tmR.ListadoFiltrarMateriales();
+    }
+
+    @Override
+    public List<String[]> CantidadMaterialNombre() {
+        return tmR.CantidadMaterialPorNombre();
+    }
+
+    @Override
+    public List<String[]> ListadoVideosTipo() {
+        return tmR.ListadoVideosTipo();
+    }
+
 }

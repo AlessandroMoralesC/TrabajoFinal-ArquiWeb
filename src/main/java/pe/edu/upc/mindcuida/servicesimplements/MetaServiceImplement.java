@@ -2,7 +2,6 @@ package pe.edu.upc.mindcuida.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.mindcuida.entities.Cita;
 import pe.edu.upc.mindcuida.entities.Meta;
 import pe.edu.upc.mindcuida.repositories.IMetaRepository;
 import pe.edu.upc.mindcuida.servicesinterfaces.IMetaService;
@@ -34,12 +33,14 @@ public class MetaServiceImplement implements IMetaService {
     }
 
     @Override
-    public List<String[]> cantidadmetas() {
-        return meR.cantidadmetas();
+    public List<String[]> cantidametas() {
+        return meR.cantidametas();
     }
 
     @Override
     public List<Meta> listMeta(String nombreusuario) {
         return meR.listMeta((nombreusuario));
     }
+
+
 }

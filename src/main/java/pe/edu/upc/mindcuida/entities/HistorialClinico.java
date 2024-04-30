@@ -13,12 +13,12 @@ public class HistorialClinico {
     private LocalDate fechaperturaHClinico;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public HistorialClinico() {
     }
 
-    public HistorialClinico(int idHClinico, LocalDate fechaperturaHClinico, Usuario usuario) {
+    public HistorialClinico(int idHClinico, LocalDate fechaperturaHClinico, Users usuario) {
         this.idHClinico = idHClinico;
         this.fechaperturaHClinico = fechaperturaHClinico;
         this.usuario = usuario;
@@ -40,11 +40,11 @@ public class HistorialClinico {
         this.fechaperturaHClinico = fechaperturaHClinico;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 

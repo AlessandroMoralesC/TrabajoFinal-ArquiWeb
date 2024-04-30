@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.RespuestasDTO;
-import pe.edu.upc.mindcuida.dtos.RolDTO;
 import pe.edu.upc.mindcuida.entities.Respuestas;
 import pe.edu.upc.mindcuida.servicesinterfaces.IRespuestasService;
 

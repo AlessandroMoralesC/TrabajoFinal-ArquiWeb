@@ -10,12 +10,14 @@ import java.util.List;
 
 @Repository
 public interface IMetaRepository extends JpaRepository<Meta,Integer> {
-    @Query(value = "select u.nombre_usuario as Usuario, count(*) as cantidad \n" +
-            "from Usuario u inner join Meta m on \n" +
-            "u.id_usuario=m.usuarioid \n" +
-            "group by u.nombre_usuario", nativeQuery = true)
-    public List<String[]> cantidadmetas();
 
-    @Query("from Meta m where m.usuario.nombreUsuario=:nombreusuario")
+    @Query(value = "select u.username as Usuario, count(*) as cantidad \n" +
+            "from Users u inner join Meta m on \n" +
+            "u.id=m.usuarioid \n" +
+            "group by u.username",nativeQuery = true)
+    public List<String[]> cantidametas();
+
+    @Query("from Meta m where m.usuario.username=:nombreusuario")
     public List<Meta> listMeta(@Param("nombreusuario")String nombreusuario);
+
 }

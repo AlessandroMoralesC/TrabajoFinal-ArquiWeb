@@ -10,7 +10,9 @@ public interface IMetaService {
     public List<Meta> list();
     public void delete(int id);
     public Meta listId(int id);
-    public List<String[]> cantidadmetas();
+    public List<String[]> cantidametas();
     public List<Meta> listMeta(String nombreusuario);
+
+
 
 }

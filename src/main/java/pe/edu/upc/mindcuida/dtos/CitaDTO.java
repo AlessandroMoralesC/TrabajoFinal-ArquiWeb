@@ -1,6 +1,6 @@
 package pe.edu.upc.mindcuida.dtos;
 
-import pe.edu.upc.mindcuida.entities.Usuario;
+import pe.edu.upc.mindcuida.entities.Users;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,7 +11,7 @@ public class CitaDTO {
     private LocalDate fechaCita;
     private String motivoCita;
     private LocalTime horaCita;
-    private Usuario usuario;
+    private Users usuario;
 
     public int getIdCita() {
         return idCita;
@@ -45,11 +45,11 @@ public class CitaDTO {
         this.horaCita = horaCita;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

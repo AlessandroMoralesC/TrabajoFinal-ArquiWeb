@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CantidadMetasDTO;
 import pe.edu.upc.mindcuida.dtos.MetaDTO;
@@ -51,9 +52,10 @@ public class MetaController {
         return  dto;
     }
 
+    //localhost:8083/metas/cantidademetas
     @GetMapping("/cantidademetas")
     public List<CantidadMetasDTO> cantidadMetasUsuarios() {
-        List<String[]> filaLista = meS.cantidadmetas();
+        List<String[]> filaLista = meS.cantidametas();
         List<CantidadMetasDTO> dtoLista=new ArrayList<>();
         for(String[] columna:filaLista){
             CantidadMetasDTO dto=new CantidadMetasDTO();
@@ -64,11 +66,12 @@ public class MetaController {
         return  dtoLista;
     }
 
+    //localhost:8083/metas/listarmetas?usuario=nombre
     @GetMapping("/listarmetas")
-    public List<MetaDTO> listaMetas(@RequestParam String usuario) {
-        return meS.listMeta(usuario).stream().map(y -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(y, MetaDTO.class);
+    public List<MetaDTO> listarMetas(@RequestParam String usuario){
+        return meS.listMeta(usuario).stream().map(y ->{
+            ModelMapper m =new ModelMapper();
+            return m.map(y,MetaDTO.class);
         }).collect(Collectors.toList());
     }
 

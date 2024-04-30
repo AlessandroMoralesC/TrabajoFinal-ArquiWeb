@@ -20,20 +20,24 @@ public class Tratamientos {
     private LocalDate fechafinTratamientos;
     @Column(name = "estadoTratamientos", nullable = false,length = 50)
     private String estadoTratamientos;
-    @Column(name = "descripcionTratamientos", nullable = false,length = 50)
+    @Column(name = "descripcionTratamientos", nullable = false)
 
     private String descripcionTratamientos;
+
+    @Column (name = "efectividadTratamientos", nullable = false)
+    private String efectividadTratamientos;
 
     public Tratamientos() {
     }
 
-    public Tratamientos(int idTratamientos, String nombreTratamientos, LocalDate fechainicioTratamientos, LocalDate fechafinTratamientos, String estadoTratamientos, String descripcionTratamientos) {
+    public Tratamientos(int idTratamientos, String nombreTratamientos, LocalDate fechainicioTratamientos, LocalDate fechafinTratamientos, String estadoTratamientos, String descripcionTratamientos, String efectividadTratamientos) {
         this.idTratamientos = idTratamientos;
         this.nombreTratamientos = nombreTratamientos;
         this.fechainicioTratamientos = fechainicioTratamientos;
         this.fechafinTratamientos = fechafinTratamientos;
         this.estadoTratamientos = estadoTratamientos;
         this.descripcionTratamientos = descripcionTratamientos;
+        this.efectividadTratamientos = efectividadTratamientos;
     }
 
     public int getIdTratamientos() {
@@ -82,5 +86,13 @@ public class Tratamientos {
 
     public void setDescripcionTratamientos(String descripcionTratamientos) {
         this.descripcionTratamientos = descripcionTratamientos;
+    }
+
+    public String getEfectividadTratamientos() {
+        return efectividadTratamientos;
+    }
+
+    public void setEfectividadTratamientos(String efectividadTratamientos) {
+        this.efectividadTratamientos = efectividadTratamientos;
     }
 }

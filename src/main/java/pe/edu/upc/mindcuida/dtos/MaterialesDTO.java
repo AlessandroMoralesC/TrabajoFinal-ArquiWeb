@@ -2,12 +2,12 @@ package pe.edu.upc.mindcuida.dtos;
 
 
 import pe.edu.upc.mindcuida.entities.TipoMaterial;
-import pe.edu.upc.mindcuida.entities.Usuario;
+import pe.edu.upc.mindcuida.entities.Users;
 
 public class MaterialesDTO {
     private int idMateriales;
     private String nombreMateriales;
-    private Usuario usuario;
+    private Users usuario;
     private TipoMaterial tipoMaterial;
 
     public int getIdMateriales() {
@@ -26,11 +26,11 @@ public class MaterialesDTO {
         this.nombreMateriales = nombreMateriales;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 

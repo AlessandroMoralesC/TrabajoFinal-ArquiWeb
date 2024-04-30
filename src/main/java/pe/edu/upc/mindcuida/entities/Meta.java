@@ -17,12 +17,12 @@ public class Meta {
     private String descripcionMeta;
     @ManyToOne
     @JoinColumn(name="usuarioid")
-    private Usuario usuario;
+    private Users usuario;
 
     public Meta() {
     }
 
-    public Meta(int idMeta, String estadoMeta, String nombreMeta, String descripcionMeta, Usuario usuario) {
+    public Meta(int idMeta, String estadoMeta, String nombreMeta, String descripcionMeta, Users usuario) {
         this.idMeta = idMeta;
         this.estadoMeta = estadoMeta;
         this.nombreMeta = nombreMeta;
@@ -62,11 +62,11 @@ public class Meta {
         this.descripcionMeta = descripcionMeta;
     }
 
-    public Usuario getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }
