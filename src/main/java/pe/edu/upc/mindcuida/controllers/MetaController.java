@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CantidadMetasDTO;
 import pe.edu.upc.mindcuida.dtos.MetaDTO;
