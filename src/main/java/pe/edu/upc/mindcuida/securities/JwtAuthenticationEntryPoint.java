@@ -1,4 +1,9 @@
 package pe.edu.upc.mindcuida.securities;
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
@@ -7,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.Serializable;
+<<<<<<< Updated upstream
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint,Serializable {
 
@@ -19,4 +25,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint,Ser
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
     }
 
+=======
+
+public class JwtAuthenticationEntryPoint {
+>>>>>>> Stashed changes
 }

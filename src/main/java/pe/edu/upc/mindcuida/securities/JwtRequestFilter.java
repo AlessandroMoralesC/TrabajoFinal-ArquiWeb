@@ -1,4 +1,5 @@
 package pe.edu.upc.mindcuida.securities;
+<<<<<<< Updated upstream
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -66,4 +67,9 @@ public class JwtRequestFilter extends OncePerRequestFilter{
         }
         chain.doFilter(request, response);
     }
+=======
+
+public class JwtRequestFilter {
+
+>>>>>>> Stashed changes
 }
