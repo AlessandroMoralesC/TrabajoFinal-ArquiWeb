@@ -1,6 +1,6 @@
 package pe.edu.upc.mindcuida.controllers;
 
-<<<<<<< Updated upstream
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,7 +49,3 @@ public class JwtAuthenticationController {
 
     }
 }
-=======
-public class JwtAuthenticationController {
-}
->>>>>>> Stashed changes
