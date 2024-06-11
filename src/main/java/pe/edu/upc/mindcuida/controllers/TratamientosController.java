@@ -21,14 +21,14 @@ public class TratamientosController {
     private ITratamientosService trS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
     public void insertar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
         trS.insert(tratamientos);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
     public void modificar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
@@ -64,7 +64,7 @@ public class TratamientosController {
         return dtoLista;
     }
 
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
     @GetMapping("/listatratamientoproceso")
     public List<ListaDeTratamientosEnProcesoDTO> listaDeTratamientosEnProceos(){
         List<String[]> filaLista=trS.listaDeTratamientosEnProceso();
