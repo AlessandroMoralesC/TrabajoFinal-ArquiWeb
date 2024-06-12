@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('administrador')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public List<UserDTO> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
