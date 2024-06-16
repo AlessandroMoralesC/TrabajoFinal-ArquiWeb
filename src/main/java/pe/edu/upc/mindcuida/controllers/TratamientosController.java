@@ -35,6 +35,7 @@ public class TratamientosController {
         trS.insert(tratamientos);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
     public List<Tratamientos> listar() {
         return trS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();

@@ -20,7 +20,7 @@ public class ExamenesController {
     private IExamenesService exS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
     public void insertar(@RequestBody ExamenesDTO examenesDTO) {
         ModelMapper d = new ModelMapper();
         Examenes examenes = d.map(examenesDTO, Examenes.class);
@@ -28,6 +28,8 @@ public class ExamenesController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO')")
+
     public List<Examenes> listar() {
         return exS.list().stream().map(y -> {
                     ModelMapper c = new ModelMapper();
