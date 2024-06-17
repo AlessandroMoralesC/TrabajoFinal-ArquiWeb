@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.RoleDTO;
 import pe.edu.upc.mindcuida.entities.Role;
@@ -17,6 +18,7 @@ public class RoleController {
     private IRoleService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void registrar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
         Role r = m.map(dto, Role.class);
@@ -24,6 +26,7 @@ public class RoleController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
         Role r = m.map(dto, Role.class);
@@ -31,11 +34,13 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") Long id) {
         rS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public RoleDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         RoleDTO dto = m.map(rS.listarId(id), RoleDTO.class);
@@ -43,6 +48,7 @@ public class RoleController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public List<RoleDTO> listar() {
         return rS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
