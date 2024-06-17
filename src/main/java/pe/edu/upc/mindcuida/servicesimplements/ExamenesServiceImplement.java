@@ -16,7 +16,10 @@ public class ExamenesServiceImplement implements IExamenesService {
     public void insert(Examenes examenes) {
         exR.save(examenes);
     }
-
+    @Override
+    public void delete(int id) {
+        exR.deleteById(id);
+    }
     @Override
     public List<Examenes> list() {
         return exR.findAll();

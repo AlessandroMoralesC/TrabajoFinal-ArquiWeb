@@ -11,5 +11,6 @@ public interface ITratamientosService {
     public List<String[]> cantidadDeTratamientosPorEfectividad();
     public List<String[]>listaDeTratamientosEnProceso();
 
+    public void delete(int id);
 
 }

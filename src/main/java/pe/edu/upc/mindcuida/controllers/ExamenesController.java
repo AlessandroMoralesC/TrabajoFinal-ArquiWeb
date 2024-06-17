@@ -6,7 +6,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.CitaDTO;
 import pe.edu.upc.mindcuida.dtos.ExamenesDTO;
+import pe.edu.upc.mindcuida.dtos.TratamientosDTO;
 import pe.edu.upc.mindcuida.entities.Examenes;
+import pe.edu.upc.mindcuida.entities.Tratamientos;
 import pe.edu.upc.mindcuida.servicesinterfaces.IExamenesService;
 
 import java.time.LocalDate;
@@ -20,15 +22,21 @@ public class ExamenesController {
     private IExamenesService exS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody ExamenesDTO examenesDTO) {
         ModelMapper d = new ModelMapper();
         Examenes examenes = d.map(examenesDTO, Examenes.class);
         exS.insert(examenes);
     }
-
+    @PutMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    public void modificar(@RequestBody ExamenesDTO examenesDTO) {
+        ModelMapper d = new ModelMapper();
+        Examenes examenes = d.map(examenesDTO, Examenes.class);
+        exS.insert(examenes);
+    }
     @GetMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public List<Examenes> listar() {
         return exS.list().stream().map(y -> {
@@ -39,12 +47,21 @@ public class ExamenesController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public ExamenesDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         ExamenesDTO dto=m.map(exS.listId(id),ExamenesDTO.class);
         return  dto;
     }
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    public void eliminar(@PathVariable("id") Integer id){
+        exS.delete(id);
+    }
     @GetMapping("/buscarResultadoporId")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<ExamenesDTO> buscarresultadosporId(@RequestParam int id) {
         return exS.buscarresultadosporId(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

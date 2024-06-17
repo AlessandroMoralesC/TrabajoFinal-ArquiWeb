@@ -9,4 +9,6 @@ public interface IExamenesService {
     public List<Examenes> list();
     public Examenes listId(int id);
     List<Examenes>buscarresultadosporId(int id);
+    public void delete(int id);
+
 }

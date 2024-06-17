@@ -21,21 +21,27 @@ public class TratamientosController {
     private ITratamientosService trS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
         trS.insert(tratamientos);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody TratamientosDTO tratamientosDTO) {
         ModelMapper d = new ModelMapper();
         Tratamientos tratamientos = d.map(tratamientosDTO, Tratamientos.class);
         trS.insert(tratamientos);
     }
+    @DeleteMapping("/{id}")
+
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    public void eliminar(@PathVariable("id") Integer id){
+        trS.delete(id);
+    }
     @GetMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public List<Tratamientos> listar() {
         return trS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();
@@ -45,6 +51,7 @@ public class TratamientosController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public TratamientosDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         TratamientosDTO dto=m.map(trS.listId(id),TratamientosDTO.class);
@@ -52,6 +59,7 @@ public class TratamientosController {
     }
 
     @GetMapping("/cantidadtratamientoefectividad")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public List<CantidadDeTratamientoPorEfectividadDTO> cantidadTratamientoPorEfectividad(){
         List<String[]> filaLista=trS.cantidadDeTratamientosPorEfectividad();
         List<CantidadDeTratamientoPorEfectividadDTO> dtoLista=new ArrayList<>();
@@ -65,7 +73,7 @@ public class TratamientosController {
         return dtoLista;
     }
 
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     @GetMapping("/listatratamientoproceso")
     public List<ListaDeTratamientosEnProcesoDTO> listaDeTratamientosEnProceos(){
         List<String[]> filaLista=trS.listaDeTratamientosEnProceso();

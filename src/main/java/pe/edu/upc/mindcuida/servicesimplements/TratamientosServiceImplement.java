@@ -19,6 +19,10 @@ public class TratamientosServiceImplement implements ITratamientosService {
 
     }
     @Override
+    public void delete(int id) {
+        trR.deleteById(id);
+    }
+    @Override
     public List<Tratamientos> list() {
         return trR.findAll();
     }
