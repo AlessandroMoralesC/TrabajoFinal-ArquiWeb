@@ -42,6 +42,13 @@ public class HistorialClinicoController {
         ).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
+    public void eliminar(@PathVariable("id") Integer id){
+        hcS.delete(id);
+    }
+
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
