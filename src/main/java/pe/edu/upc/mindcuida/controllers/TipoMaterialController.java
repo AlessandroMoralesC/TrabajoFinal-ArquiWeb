@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.*;
 import pe.edu.upc.mindcuida.entities.TipoMaterial;
@@ -18,18 +19,24 @@ public class TipoMaterialController {
     private ITipoMaterialService tmS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void insertar(@RequestBody TipoMaterialDTO tipoMaterialDTO) {
         ModelMapper d = new ModelMapper();
         TipoMaterial tipoMaterial= d.map(tipoMaterialDTO,TipoMaterial.class);
         tmS.insert(tipoMaterial);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void modificar(@RequestBody TipoMaterialDTO tipoMaterialDTO) {
         ModelMapper d = new ModelMapper();
         TipoMaterial tipoMaterial = d.map(tipoMaterialDTO, TipoMaterial.class);
         tmS.insert(tipoMaterial);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<TipoMaterialDTO> respuestas(){
         return tmS.list().stream().map(y-> {
             ModelMapper m=new ModelMapper();
@@ -37,11 +44,15 @@ public class TipoMaterialController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void eliminar(@PathVariable("id") Integer id){
         tmS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public TipoMaterialDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         TipoMaterialDTO dto=m.map(tmS.listId(id),TipoMaterialDTO.class);
