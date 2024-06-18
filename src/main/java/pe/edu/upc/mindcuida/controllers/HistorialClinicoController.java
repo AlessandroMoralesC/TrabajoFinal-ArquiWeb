@@ -18,20 +18,22 @@ public class HistorialClinicoController {
     private IHistorialClinicoService hcS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody HistorialClinicoDTO historialClinicoDTO) {
         ModelMapper d = new ModelMapper();
         HistorialClinico historialClinico = d.map(historialClinicoDTO, HistorialClinico.class);
         hcS.insert(historialClinico);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody HistorialClinicoDTO historialClinicoDTO) {
         ModelMapper d = new ModelMapper();
         HistorialClinico historialClinico = d.map(historialClinicoDTO, HistorialClinico.class);
         hcS.insert(historialClinico);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<HistorialClinico> listar() {
         return hcS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();
@@ -41,6 +43,8 @@ public class HistorialClinicoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public HistorialClinicoDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         HistorialClinicoDTO dto=m.map(hcS.listId(id),HistorialClinicoDTO.class);
