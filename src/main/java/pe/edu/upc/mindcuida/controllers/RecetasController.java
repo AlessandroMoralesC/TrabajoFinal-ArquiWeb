@@ -18,20 +18,22 @@ public class RecetasController {
     private IRecetasService resS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody RecetasDTO recetasDTO) {
         ModelMapper d=new ModelMapper();
         Recetas recetas=d.map(recetasDTO,Recetas.class);
         resS.insert(recetas);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody RecetasDTO recetasDTO) {
         ModelMapper d = new ModelMapper();
         Recetas recetas = d.map(recetasDTO, Recetas.class);
         resS.insert(recetas);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<Recetas> listar(){
         return resS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();
@@ -41,9 +43,18 @@ public class RecetasController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public RecetasDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         RecetasDTO dto=m.map(resS.listId(id),RecetasDTO.class);
         return  dto;
+    }
+
+    @DeleteMapping("/{id}")
+
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    public void eliminar(@PathVariable("id") Integer id){
+        resS.delete(id);
     }
 }
