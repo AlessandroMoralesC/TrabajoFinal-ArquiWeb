@@ -19,6 +19,7 @@ public class RoleController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void registrar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
         Role r = m.map(dto, Role.class);
@@ -41,6 +42,7 @@ public class RoleController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public RoleDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         RoleDTO dto = m.map(rS.listarId(id), RoleDTO.class);
@@ -49,6 +51,7 @@ public class RoleController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<RoleDTO> listar() {
         return rS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
