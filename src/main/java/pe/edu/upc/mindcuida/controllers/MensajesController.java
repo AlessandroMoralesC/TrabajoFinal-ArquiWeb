@@ -2,7 +2,6 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.MensajesDTO;
 import pe.edu.upc.mindcuida.entities.Mensajes;
@@ -19,14 +18,12 @@ public class MensajesController {
     private IMensajesService mnsS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody MensajesDTO mensajesDTO) {
         ModelMapper d=new ModelMapper();
         Mensajes mensajes=d.map(mensajesDTO, Mensajes.class);
         mnsS.insert(mensajes);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody MensajesDTO mensajesDTO) {
         ModelMapper d = new ModelMapper();
         Mensajes mensajes = d.map(mensajesDTO, Mensajes.class);
