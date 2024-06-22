@@ -18,20 +18,22 @@ public class HorarioMedicoController {
     private IHorarioMedicoService hmS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
         hmS.insert(horarioMedico);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
         hmS.insert(horarioMedico);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<HorarioMedico> listar() {
         return hmS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();

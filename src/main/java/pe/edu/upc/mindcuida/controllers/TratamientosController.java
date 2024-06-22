@@ -51,7 +51,6 @@ public class TratamientosController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public TratamientosDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         TratamientosDTO dto=m.map(trS.listId(id),TratamientosDTO.class);
@@ -59,7 +58,6 @@ public class TratamientosController {
     }
 
     @GetMapping("/cantidadtratamientoefectividad")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public List<CantidadDeTratamientoPorEfectividadDTO> cantidadTratamientoPorEfectividad(){
         List<String[]> filaLista=trS.cantidadDeTratamientosPorEfectividad();
         List<CantidadDeTratamientoPorEfectividadDTO> dtoLista=new ArrayList<>();
@@ -73,7 +71,6 @@ public class TratamientosController {
         return dtoLista;
     }
 
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     @GetMapping("/listatratamientoproceso")
     public List<ListaDeTratamientosEnProcesoDTO> listaDeTratamientosEnProceos(){
         List<String[]> filaLista=trS.listaDeTratamientosEnProceso();

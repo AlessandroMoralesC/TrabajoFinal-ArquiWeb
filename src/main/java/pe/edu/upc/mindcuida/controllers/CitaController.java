@@ -19,20 +19,22 @@ public class CitaController {
     private ICitaService ciS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);
         ciS.insert(cita);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('psicologo')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody CitaDTO citaDTO) {
         ModelMapper d = new ModelMapper();
         Cita cita = d.map(citaDTO, Cita.class);
         ciS.insert(cita);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<Cita> listar() {
         return ciS.list().stream().map(y -> {
                     ModelMapper c = new ModelMapper();
@@ -41,6 +43,8 @@ public class CitaController {
         ).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void eliminar(@PathVariable("id") Integer id){
         ciS.delete(id);
     }

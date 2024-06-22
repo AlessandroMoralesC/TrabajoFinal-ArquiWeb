@@ -51,7 +51,6 @@ public class TipoMaterialController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public TipoMaterialDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
