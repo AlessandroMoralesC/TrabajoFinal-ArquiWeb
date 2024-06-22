@@ -11,4 +11,6 @@ public interface IComunidadService {
     public Comunidad listId(int id);
     public List<String[]> listaExp();
     public List<String[]> listaRec();
+    public void delete(int id);
+
 }
