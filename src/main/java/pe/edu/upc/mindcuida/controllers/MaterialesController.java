@@ -17,14 +17,14 @@ public class MaterialesController {
     private IMaterialesService maS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody MaterialesDTO materialesDTO) {
         ModelMapper d = new ModelMapper();
         Materiales materiales = d.map(materialesDTO, Materiales.class);
         maS.insert(materiales);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody MaterialesDTO materialesDTO) {
         ModelMapper d = new ModelMapper();
         Materiales materiales = d.map(materialesDTO, Materiales.class);
