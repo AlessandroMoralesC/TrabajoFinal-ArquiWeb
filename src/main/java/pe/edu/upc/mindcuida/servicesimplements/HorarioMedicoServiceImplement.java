@@ -17,6 +17,10 @@ public class HorarioMedicoServiceImplement implements IHorarioMedicoService {
         hmR.save(horarioMedico);
     }
     @Override
+    public void delete(int id) {
+        hmR.deleteById(id);
+    }
+    @Override
     public List<HorarioMedico> list() {
         return hmR.findAll();
     }
