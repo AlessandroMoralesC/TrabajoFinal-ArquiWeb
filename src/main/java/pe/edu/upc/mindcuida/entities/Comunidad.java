@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Comunidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idComunidad;
+    private int IdComunidad;
     @Column(name = "experienciasComunidad", nullable = false, length = 200)
     private String experienciasComunidad;
     @Column(name = "aprobacionesComunidad", nullable = false, length = 50)
@@ -22,7 +22,7 @@ public class Comunidad {
     }
 
     public Comunidad(int idComunidad, String experienciasComunidad, String aprobacionesComunidad, String recomendacionesComunidad, Users usuario) {
-        this.idComunidad = idComunidad;
+        this.IdComunidad = idComunidad;
         this.experienciasComunidad = experienciasComunidad;
         this.aprobacionesComunidad = aprobacionesComunidad;
         this.recomendacionesComunidad = recomendacionesComunidad;
@@ -30,11 +30,11 @@ public class Comunidad {
     }
 
     public int getIdComunidad() {
-        return idComunidad;
+        return IdComunidad;
     }
 
     public void setIdComunidad(int idComunidad) {
-        this.idComunidad = idComunidad;
+        IdComunidad = idComunidad;
     }
 
     public String getExperienciasComunidad() {

@@ -18,22 +18,20 @@ public class HorarioMedicoController {
     private IHorarioMedicoService hmS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('psicologo')")
     public void insertar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
         hmS.insert(horarioMedico);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('psicologo')")
     public void modificar(@RequestBody HorarioMedicoDTO horarioMedicoDTO) {
         ModelMapper d = new ModelMapper();
         HorarioMedico horarioMedico = d.map(horarioMedicoDTO, HorarioMedico.class);
         hmS.insert(horarioMedico);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public List<HorarioMedico> listar() {
         return hmS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();
@@ -41,12 +39,7 @@ public class HorarioMedicoController {
                 }
         ).collect(Collectors.toList());
     }
-    @DeleteMapping("/{id}")
 
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-    public void eliminar(@PathVariable("id") Integer id){
-        hmS.delete(id);
-    }
     @GetMapping("/{id}")
     public HorarioMedicoDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();

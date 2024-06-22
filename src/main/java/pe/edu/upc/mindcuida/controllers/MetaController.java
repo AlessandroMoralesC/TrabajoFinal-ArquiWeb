@@ -20,24 +20,18 @@ public class MetaController {
     private IMetaService meS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public void insertar(@RequestBody MetaDTO metaDTO) {
         ModelMapper d=new ModelMapper();
         Meta meta=d.map(metaDTO,Meta.class);
         meS.insert(meta);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public void modificar(@RequestBody MetaDTO metaDTO) {
         ModelMapper d = new ModelMapper();
         Meta meta = d.map(metaDTO, Meta.class);
         meS.insert(meta);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public List<Meta> listar(){
     return meS.list().stream().map(y->{
         ModelMapper m=new ModelMapper();
@@ -47,15 +41,11 @@ public class MetaController {
 
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public void eliminar(@PathVariable("id") Integer id){
         meS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public MetaDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         MetaDTO dto=m.map(meS.listId(id),MetaDTO.class);
@@ -64,7 +54,6 @@ public class MetaController {
 
     //localhost:8083/metas/cantidademetas
     @GetMapping("/cantidademetas")
-
     public List<CantidadMetasDTO> cantidadMetasUsuarios() {
         List<String[]> filaLista = meS.cantidametas();
         List<CantidadMetasDTO> dtoLista=new ArrayList<>();

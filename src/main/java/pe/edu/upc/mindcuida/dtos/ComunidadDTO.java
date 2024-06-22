@@ -4,18 +4,18 @@ package pe.edu.upc.mindcuida.dtos;
 import pe.edu.upc.mindcuida.entities.Users;
 
 public class ComunidadDTO {
-    private int idComunidad;
+    private int IdComunidad;
     private String experienciasComunidad;
     private String aprobacionesComunidad;
     private String recomendacionesComunidad;
     private Users usuario;
 
     public int getIdComunidad() {
-        return idComunidad;
+        return IdComunidad;
     }
 
     public void setIdComunidad(int idComunidad) {
-        this.idComunidad = idComunidad;
+        IdComunidad = idComunidad;
     }
 
     public String getExperienciasComunidad() {

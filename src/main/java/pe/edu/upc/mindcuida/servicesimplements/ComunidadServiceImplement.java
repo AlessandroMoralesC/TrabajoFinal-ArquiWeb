@@ -26,10 +26,7 @@ public class ComunidadServiceImplement implements IComunidadService {
     public Comunidad listId(int id) {
         return cR.findById(id).orElse(new Comunidad());
     }
-    @Override
-    public void delete(int id) {
-        cR.deleteById(id);
-    }
+
     @Override
     public List<String[]> listaExp() {
         return cR.identificaExp();
