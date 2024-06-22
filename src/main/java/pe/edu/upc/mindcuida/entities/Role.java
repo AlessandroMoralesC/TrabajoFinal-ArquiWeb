@@ -1,5 +1,6 @@
 package pe.edu.upc.mindcuida.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Role implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference  // Esto evita la recursividad infinita
     private Users user;
 
 

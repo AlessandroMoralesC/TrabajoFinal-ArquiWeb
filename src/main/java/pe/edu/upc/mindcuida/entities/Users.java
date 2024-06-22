@@ -1,5 +1,6 @@
 package pe.edu.upc.mindcuida.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -33,8 +34,8 @@ public class Users implements Serializable {
 
 
     private Boolean enabled;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference  // Esto maneja la referencia durante la serialización
     private List<Role> roles;
 
     public Users() {

@@ -2,6 +2,7 @@ package pe.edu.upc.mindcuida.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.mindcuida.dtos.RespuestasDTO;
 import pe.edu.upc.mindcuida.entities.Respuestas;
@@ -41,6 +42,13 @@ public class RespuestasController {
         ModelMapper m=new ModelMapper();
         RespuestasDTO dto=m.map(rS.listId(id),RespuestasDTO.class);
         return  dto;
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
+    public void eliminar(@PathVariable("id") Integer id){
+        rS.delete(id);
     }
 
 

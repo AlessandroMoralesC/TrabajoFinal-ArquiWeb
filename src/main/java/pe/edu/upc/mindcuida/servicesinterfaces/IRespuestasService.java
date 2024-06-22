@@ -11,4 +11,6 @@ public interface IRespuestasService {
 
     public List<Respuestas> list();
     public Respuestas listId(int id);
+
+    public void delete(int id);
 }
