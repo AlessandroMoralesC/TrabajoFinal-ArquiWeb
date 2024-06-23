@@ -71,12 +71,8 @@ public class TratamientosController {
         return dtoLista;
     }
 
-<<<<<<< HEAD
     @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
         @GetMapping("/listatratamientoproceso")
-=======
-    @GetMapping("/listatratamientoproceso")
->>>>>>> f7c428882bcc83b023bcff764a67442b4fd23937
     public List<ListaDeTratamientosEnProcesoDTO> listaDeTratamientosEnProceos(){
         List<String[]> filaLista=trS.listaDeTratamientosEnProceso();
         List<ListaDeTratamientosEnProcesoDTO> dtoLista=new ArrayList<>();
