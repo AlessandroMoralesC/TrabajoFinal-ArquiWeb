@@ -59,6 +59,8 @@ public class TipoMaterialController {
         return  dto;
     }
     @GetMapping("/CantidadMaterialPorNombreDTO")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<CantidadMaterialPorNombreDTO> cantidadmaterialPorNombre(){
         List<String[]> filaLista=tmS.CantidadMaterialNombre();
         List<CantidadMaterialPorNombreDTO> dtoLista=new ArrayList<>();

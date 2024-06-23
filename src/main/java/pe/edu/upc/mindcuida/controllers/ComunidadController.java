@@ -19,6 +19,7 @@ public class ComunidadController {
     private IComunidadService cS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public void insertar(@RequestBody ComunidadDTO comunidadDTO) {
         ModelMapper d = new ModelMapper();
@@ -26,14 +27,15 @@ public class ComunidadController {
         cS.insert(comunidad);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public void modificar(@RequestBody ComunidadDTO comunidadDTO) {
         ModelMapper d = new ModelMapper();
         Comunidad comunidad = d.map(comunidadDTO, Comunidad.class);
         cS.insert(comunidad);
     }
-
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public List<Comunidad> listar() {
         return cS.list().stream().map(y -> {
@@ -49,12 +51,7 @@ public class ComunidadController {
         ComunidadDTO dto=m.map(cS.listId(id),ComunidadDTO.class);
         return  dto;
     }
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
-    public void eliminar(@PathVariable("id") Integer id){
-        cS.delete(id);
-    }
         @GetMapping("/experiencias")
     public List<ComunidadDTO> experienciasDTOS() {
         List<String[]> filaLista = cS.listaExp();

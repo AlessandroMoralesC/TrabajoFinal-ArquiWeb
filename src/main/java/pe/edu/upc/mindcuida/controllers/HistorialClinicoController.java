@@ -50,7 +50,6 @@ public class HistorialClinicoController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public HistorialClinicoDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();

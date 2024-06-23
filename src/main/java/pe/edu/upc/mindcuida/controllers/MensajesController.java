@@ -19,20 +19,22 @@ public class MensajesController {
     private IMensajesService mnsS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void insertar(@RequestBody MensajesDTO mensajesDTO) {
         ModelMapper d=new ModelMapper();
         Mensajes mensajes=d.map(mensajesDTO, Mensajes.class);
         mnsS.insert(mensajes);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void modificar(@RequestBody MensajesDTO mensajesDTO) {
         ModelMapper d = new ModelMapper();
         Mensajes mensajes = d.map(mensajesDTO, Mensajes.class);
         mnsS.insert(mensajes);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public List<Mensajes> listar(){
         return mnsS.list().stream().map(y->{
                     ModelMapper m=new ModelMapper();
@@ -42,6 +44,8 @@ public class MensajesController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+
     public void eliminar(@PathVariable("id") Integer id){
         mnsS.delete(id);
     }

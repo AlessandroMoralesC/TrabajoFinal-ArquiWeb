@@ -54,8 +54,6 @@ public class MetaController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-
     public MetaDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         MetaDTO dto=m.map(meS.listId(id),MetaDTO.class);
@@ -64,7 +62,6 @@ public class MetaController {
 
     //localhost:8083/metas/cantidademetas
     @GetMapping("/cantidademetas")
-
     public List<CantidadMetasDTO> cantidadMetasUsuarios() {
         List<String[]> filaLista = meS.cantidametas();
         List<CantidadMetasDTO> dtoLista=new ArrayList<>();

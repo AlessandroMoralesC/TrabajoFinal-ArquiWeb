@@ -41,12 +41,7 @@ public class HorarioMedicoController {
                 }
         ).collect(Collectors.toList());
     }
-    @DeleteMapping("/{id}")
 
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
-    public void eliminar(@PathVariable("id") Integer id){
-        hmS.delete(id);
-    }
     @GetMapping("/{id}")
     public HorarioMedicoDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();

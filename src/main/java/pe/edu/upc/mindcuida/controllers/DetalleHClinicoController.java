@@ -41,7 +41,6 @@ public class DetalleHClinicoController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
     public DetalleHClinicoDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
         DetalleHClinicoDTO dto=m.map(dhS.listId(id),DetalleHClinicoDTO.class);
