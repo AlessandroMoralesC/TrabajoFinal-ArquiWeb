@@ -43,6 +43,7 @@ public class RecetasController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public RecetasDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
