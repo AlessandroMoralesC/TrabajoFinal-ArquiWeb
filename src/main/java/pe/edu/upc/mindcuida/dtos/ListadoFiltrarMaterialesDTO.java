@@ -1,23 +1,23 @@
 package pe.edu.upc.mindcuida.dtos;
 
 public class ListadoFiltrarMaterialesDTO {
-    private String EnlaceMaterial;
+    private String tematmaterial;
 
-    private String MaterialFormato;
+    private String tipotmaterial;
 
-    public String getEnlaceMaterial() {
-        return EnlaceMaterial;
+    public String getTematmaterial() {
+        return tematmaterial;
     }
 
-    public void setEnlaceMaterial(String enlaceMaterial) {
-        EnlaceMaterial = enlaceMaterial;
+    public void setTematmaterial(String tematmaterial) {
+        this.tematmaterial = tematmaterial;
     }
 
-    public String getMaterialFormato() {
-        return MaterialFormato;
+    public String getTipotmaterial() {
+        return tipotmaterial;
     }
 
-    public void setMaterialFormato(String materialFormato) {
-        MaterialFormato = materialFormato;
+    public void setTipotmaterial(String tipotmaterial) {
+        this.tipotmaterial = tipotmaterial;
     }
 }

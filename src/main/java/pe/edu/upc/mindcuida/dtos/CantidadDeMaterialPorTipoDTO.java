@@ -2,7 +2,7 @@ package pe.edu.upc.mindcuida.dtos;
 
 public class CantidadDeMaterialPorTipoDTO {
     private String tipotmaterial;
-    private int CantidadRegistros;
+    private int cantidad;
 
     public String getTipotmaterial() {
         return tipotmaterial;
@@ -12,11 +12,11 @@ public class CantidadDeMaterialPorTipoDTO {
         this.tipotmaterial = tipotmaterial;
     }
 
-    public int getCantidadRegistros() {
-        return CantidadRegistros;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setCantidadRegistros(int cantidadRegistros) {
-        CantidadRegistros = cantidadRegistros;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

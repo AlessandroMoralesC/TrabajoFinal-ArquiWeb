@@ -59,7 +59,6 @@ public class TipoMaterialController {
         return  dto;
     }
     @GetMapping("/CantidadMaterialPorNombreDTO")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public List<CantidadMaterialPorNombreDTO> cantidadmaterialPorNombre(){
         List<String[]> filaLista=tmS.CantidadMaterialNombre();
@@ -67,7 +66,7 @@ public class TipoMaterialController {
         for (String[] columna:filaLista){
             CantidadMaterialPorNombreDTO dto=new CantidadMaterialPorNombreDTO();
             dto.setTematmaterial(columna[0]);
-            dto.setCantidadRegistrosTema(Integer.parseInt(columna[1]));
+            dto.setCantidad(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
@@ -79,7 +78,7 @@ public class TipoMaterialController {
         for (String[] columna:filaLista){
             CantidadDeMaterialPorTipoDTO dto=new CantidadDeMaterialPorTipoDTO();
             dto.setTipotmaterial(columna[0]);
-            dto.setCantidadRegistros(Integer.parseInt(columna[1]));
+            dto.setCantidad(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
@@ -91,8 +90,8 @@ public class TipoMaterialController {
         List<ListadoFiltrarMaterialesDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filaLista) {
             ListadoFiltrarMaterialesDTO dto = new ListadoFiltrarMaterialesDTO();
-            dto.setEnlaceMaterial(columna[0]);
-            dto.setMaterialFormato(columna[1]);
+            dto.setTipotmaterial(columna[0]);
+            dto.setTematmaterial(columna[1]);
             dtoLista.add(dto);
         }
         return dtoLista;
