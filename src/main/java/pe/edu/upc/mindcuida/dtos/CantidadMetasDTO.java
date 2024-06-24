@@ -1,22 +1,22 @@
 package pe.edu.upc.mindcuida.dtos;
 
 public class CantidadMetasDTO {
-    private String Usuario;
-    private int CantidadMetas;
+    private String usuario;
+    private int cantidad;
 
     public String getUsuario() {
-        return Usuario;
+        return usuario;
     }
 
     public void setUsuario(String usuario) {
-        Usuario = usuario;
+        this.usuario = usuario;
     }
 
-    public int getCantidadMetas() {
-        return CantidadMetas;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setCantidadMetas(int cantidadMetas) {
-        CantidadMetas = cantidadMetas;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

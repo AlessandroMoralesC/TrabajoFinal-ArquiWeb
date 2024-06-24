@@ -68,7 +68,7 @@ public class MetaController {
         for(String[] columna:filaLista){
             CantidadMetasDTO dto=new CantidadMetasDTO();
             dto.setUsuario(columna[0]);
-            dto.setCantidadMetas(Integer.parseInt(columna[1]));
+            dto.setCantidad(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return  dtoLista;
