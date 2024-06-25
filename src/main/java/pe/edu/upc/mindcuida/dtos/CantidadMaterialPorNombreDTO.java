@@ -2,7 +2,7 @@ package pe.edu.upc.mindcuida.dtos;
 
 public class CantidadMaterialPorNombreDTO {
     private String tematmaterial;
-    private int CantidadRegistrosTema;
+    private int cantidad;
 
     public String getTematmaterial() {
         return tematmaterial;
@@ -12,11 +12,11 @@ public class CantidadMaterialPorNombreDTO {
         this.tematmaterial = tematmaterial;
     }
 
-    public int getCantidadRegistrosTema() {
-        return CantidadRegistrosTema;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setCantidadRegistrosTema(int cantidadRegistrosTema) {
-        CantidadRegistrosTema = cantidadRegistrosTema;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

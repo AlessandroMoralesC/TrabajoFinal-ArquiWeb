@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface IMetaRepository extends JpaRepository<Meta,Integer> {
 
-    @Query(value = "select u.username as Usuario, count(*) as cantidad \n" +
+    @Query(value = "select u.username as usuario, count(*) as cantidad \n" +
             "from Users u inner join Meta m on \n" +
             "u.id=m.usuarioid \n" +
             "group by u.username",nativeQuery = true)

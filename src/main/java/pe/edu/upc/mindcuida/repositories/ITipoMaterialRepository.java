@@ -23,7 +23,7 @@ public interface ITipoMaterialRepository extends JpaRepository<TipoMaterial, Int
             "ORDER BY cantidad DESC", nativeQuery = true)
     List<String[]> CantidadDeMaterialPorTipo();
 
-    @Query(value = " SELECT linktmaterial, tipotmaterial, tematmaterial \n" +
+    @Query(value = " SELECT  tipotmaterial, tematmaterial \n" +
             "FROM tipo_material \n" +
             "WHERE tematmaterial = 'ansiedad'; ",nativeQuery = true)
     List<String[]> ListadoFiltrarMateriales();
@@ -31,7 +31,7 @@ public interface ITipoMaterialRepository extends JpaRepository<TipoMaterial, Int
 
     @Query(value = " SELECT tematmaterial, linktmaterial \n " +
             "FROM tipo_material \n" +
-            "WHERE tematmaterial = 'depresion' \n" +
-            "AND tipotmaterial = 'lectura'; ",nativeQuery = true)
+            "WHERE tematmaterial = 'aaa' \n" +
+            "AND tipotmaterial = 'Video'; ",nativeQuery = true)
     List<String[]> ListadoVideosTipo();
 }

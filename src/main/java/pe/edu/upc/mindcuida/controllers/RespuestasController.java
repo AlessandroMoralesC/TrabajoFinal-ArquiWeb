@@ -19,18 +19,24 @@ public class RespuestasController {
     private IRespuestasService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+
     public void insertar(@RequestBody RespuestasDTO respuestasDTO) {
         ModelMapper d = new ModelMapper();
         Respuestas respuestas= d.map(respuestasDTO,Respuestas.class);
         rS.insert(respuestas);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+
     public void modificar(@RequestBody RespuestasDTO respuestasDTO) {
         ModelMapper d = new ModelMapper();
         Respuestas respuestas= d.map(respuestasDTO,Respuestas.class);
         rS.insert(respuestas);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+
     public List<RespuestasDTO> respuestas(){
         return rS.list().stream().map(y-> {
             ModelMapper m=new ModelMapper();

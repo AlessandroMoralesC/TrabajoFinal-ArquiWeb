@@ -47,7 +47,6 @@ public class ExamenesController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public ExamenesDTO listarId(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();
@@ -60,7 +59,6 @@ public class ExamenesController {
         exS.delete(id);
     }
     @GetMapping("/buscarResultadoporId")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public List<ExamenesDTO> buscarresultadosporId(@RequestParam int id) {
         return exS.buscarresultadosporId(id).stream().map(x -> {

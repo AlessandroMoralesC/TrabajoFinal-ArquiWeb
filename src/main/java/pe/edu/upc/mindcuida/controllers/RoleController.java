@@ -18,7 +18,7 @@ public class RoleController {
     private IRoleService rS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 
     public void registrar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -27,7 +27,7 @@ public class RoleController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void modificar(@RequestBody RoleDTO dto) {
         ModelMapper m = new ModelMapper();
         Role r = m.map(dto, Role.class);
@@ -35,13 +35,12 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") Long id) {
         rS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
 
     public RoleDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
@@ -50,7 +49,7 @@ public class RoleController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 
     public List<RoleDTO> listar() {
         return rS.list().stream().map(x -> {
