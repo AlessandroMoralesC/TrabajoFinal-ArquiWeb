@@ -35,7 +35,6 @@ public class RespuestasController {
         rS.insert(respuestas);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 
     public List<RespuestasDTO> respuestas(){
         return rS.list().stream().map(y-> {
