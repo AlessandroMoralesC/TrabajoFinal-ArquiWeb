@@ -48,4 +48,11 @@ public class HorarioMedicoController {
         HorarioMedicoDTO dto=m.map(hmS.listId(id),HorarioMedicoDTO.class);
         return  dto;
     }
+
+    @DeleteMapping("/{id}")
+
+    @PreAuthorize("hasAuthority('PSICOLOGO') or hasAuthority('ADMINISTRADOR')")
+    public void eliminar(@PathVariable("id") Integer id){
+        hmS.delete(id);
+    }
 }

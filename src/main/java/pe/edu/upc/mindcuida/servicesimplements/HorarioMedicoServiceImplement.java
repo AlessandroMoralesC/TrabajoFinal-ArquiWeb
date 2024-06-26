@@ -25,4 +25,8 @@ public class HorarioMedicoServiceImplement implements IHorarioMedicoService {
     public HorarioMedico listId(int id) {
         return hmR.findById(id).orElse(new HorarioMedico());
     }
+    @Override
+    public void delete(int id) {
+        hmR.deleteById(id);
+    }
 }
